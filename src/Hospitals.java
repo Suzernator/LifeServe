@@ -45,6 +45,10 @@ public class Hospitals { //Hospital class
 		int newCode = input.nextInt();
 		input.nextLine();
 		
+		if(hospitalMap.containsKey(newCode)) {
+			System.out.println("Code already exists, please select a new code.\n");
+		}
+		
 		System.out.print("Name: "); 
 		String name = input.nextLine(); //input name
 		if(name.isEmpty()) {
