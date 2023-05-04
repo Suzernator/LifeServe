@@ -107,8 +107,8 @@ public class Hospitals { //Hospital class
 		menu(); //recall menu
 	}
 	
-	public static void searchHospital() {
-		LocalDate today = LocalDate.now();
+	public static void searchHospital() { //method to search hospital
+		LocalDate today = LocalDate.now(); //get current date
 		
 		System.out.print("Enter 4-digit hospital code (ex. 0001): ");
 		int code = input.nextInt();
@@ -123,6 +123,7 @@ public class Hospitals { //Hospital class
 			System.out.println("Minimum Days:    " + hospitalInfo[7]);
 			System.out.println("Minimum Expiration date to send: " + calculateExpirationDate(today, hospitalInfo[7]) + "\n");
 		}
+		
 		else {
 			System.out.print("Hospital not found.\n\n");
 			menu();
@@ -131,93 +132,93 @@ public class Hospitals { //Hospital class
 		menu();
 	}
 	
-	public static void editHospital() {
+	public static void editHospital() { //method to edit info
 		System.out.print("Enter 4-digit hospital code (ex. 0001): ");
-		int code = input.nextInt();
+		int code = input.nextInt(); //input code
 		input.nextLine();
 		
-		if(hospitalMap.containsKey(code)) {
-			String[] editInfo = hospitalMap.get(code);
+		if(hospitalMap.containsKey(code)) { //check to see if map key is valid
+			String[] editInfo = hospitalMap.get(code); //create new array to hold edited info
 			
 			System.out.print("Name: ");
-			String newName = input.nextLine();
-			if(!newName.equals("")) {
+			String newName = input.nextLine(); //input new name
+			if(!newName.equals("")) { //if no changes made, keep previous input
 				editInfo[0] = newName;
 			}
 			
 			System.out.print("Street Address: ");
-			String newAddress = input.nextLine();
+			String newAddress = input.nextLine(); //input new address
 			if(!newAddress.equals("")) {
 				editInfo[1] = newAddress;
 			}
 			
 			System.out.print("City: ");
-			String newCity = input.nextLine();
+			String newCity = input.nextLine(); //input new city
 			if(!newCity.equals("")) {
 				editInfo[2] = newCity;
 			}
 			
 			System.out.print("State: ");
-			String newState = input.nextLine();
+			String newState = input.nextLine(); //input new state
 			if(!newState.equals("")) {
 				editInfo[3] = newState;
 			}
 			
 			System.out.print("Zipcode: ");
-			String newZip = input.nextLine();
+			String newZip = input.nextLine(); //input new zip
 			if(!newZip.equals("")) {
 				editInfo[4] = newZip;
 			}
 			
 			System.out.print("Phone Number with Area Code: ");
-			String newPhone = input.nextLine();
+			String newPhone = input.nextLine(); //input new phone
 			if(!newPhone.equals("")) {
 				editInfo[5] = newPhone;
 			}
 			
 			System.out.print("Fax Number with Area Code: ");
-			String newFax = input.nextLine();
+			String newFax = input.nextLine(); //input new fax
 			if(!newFax.equals("")) {
 				editInfo[6] = newFax;
 			}
 			
 			System.out.print("Minimum Outdate (Days): ");
-			String newDays = input.nextLine();
+			String newDays = input.nextLine(); //input new num of days
 			if(!newDays.equals("")) {
 				editInfo[7] = newDays;
 			}
 			
-			hospitalMap.put(code, editInfo);
+			hospitalMap.put(code, editInfo); //add edited info value and pair with key, in map
 			
 			System.out.println("\nHospital information successfully changed!\n");
 		}
 				
 		else {
-			System.out.print("Hospital not found.\n\n");
+			System.out.print("Hospital not found.\n\n"); //prompt if hospital code not found
 			menu();
 		}
 		
 		menu();
 	}
 	
-	public static void deleteHospital() {
+	public static void deleteHospital() { //method to delete hospital from map
 		System.out.print("Enter 4-digit hospital code (ex. 0001): "); 
 		int code = input.nextInt(); //input code
 		input.nextLine();
 		
-		if(hospitalMap.containsKey(code)) { //if key is found in map
+		if(hospitalMap.containsKey(code)) { //check to see if code is valid
 			String[] hospitalInfo = hospitalMap.get(code); 
 			hospitalMap.remove(code, hospitalInfo); //remove hospital key and value from map
 			System.out.println("Hospital successfully deleted!\n");
 		}
-		else { //prompt user is no key is found
+		else { //prompt user if no key is found
 			System.out.println("No hospital with that code. No action completed.\n");
 		}
 		
 		menu(); //recall menu
 	}
 	
-	public static void viewHospital() {
+	public static void viewHospital() { //method to view all hospitals entered
 		LocalDate today = LocalDate.now(); //current date
 		
 		//printing all key and value from map
@@ -240,7 +241,7 @@ public class Hospitals { //Hospital class
 		menu(); //recall menu
 	}
 	
-	public static void menu() {
+	public static void menu() { //main menu method
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.println("//Please select a NUMBER from the menu below.\n");
@@ -253,15 +254,15 @@ public class Hospitals { //Hospital class
 		System.out.println("6. QUIT program");
 		
 		System.out.print("\nUser selection: ");
-		int selection = sc.nextInt();
+		int selection = sc.nextInt(); //make sure selection is int
 		System.out.print("\n");
 	
-		if((selection > 6) || (selection <= 0)) {
+		if((selection > 6) || (selection <= 0)) { //prompt if number is out of bounds
 			System.out.println("Please only choose a number from 1-6\n");
 			menu();
 		}
 		
-		while((selection > 0) && (selection <= 6)) {
+		while((selection > 0) && (selection <= 6)) { //switch case for menu user selection
 			switch(selection) {
 			
 			case 1: 
