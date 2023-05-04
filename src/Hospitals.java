@@ -92,21 +92,21 @@ public class Hospitals { //Hospital class
 		}
 		
 		//menu shows how to convert weeks to days
-		System.out.println("\n\t  Outdate calculator for \n\t  minimum number of DAYS \n\t   hospital will accept:");
-		System.out.println("\t**************************");
-		System.out.println("\t* Shortest date = 0 days *");
-		System.out.println("\t*  1 week out =  7 days  *");
-		System.out.println("\t*  2 week out = 14 days  *");
-		System.out.println("\t*  3 week out = 21 days  *");
-		System.out.println("\t*  4 week out = 28 days  *");
-		System.out.println("\t**************************");
+		System.out.println("\n\t   Outdate calculator for \n\t   minimum number of DAYS \n\t    hospital will accept:");
+		System.out.println("\t*****************************");
+		System.out.println("\t*  Shortest date =  0 days  *");
+		System.out.println("\t*  1 week out    =  7 days  *");
+		System.out.println("\t*  2 weeks out   = 14 days  *");
+		System.out.println("\t*  3 weeks out   = 21 days  *");
+		System.out.println("\t*  4 weeks out   = 28 days  *");
+		System.out.println("\t*****************************");
 		
 		System.out.print("\nMinimum Outdate (DAYS): ");
 		int days = input.nextInt(); //input days
 
 		String[] newInfo = {name, address, city, state, zip, phone, fax, Integer.toString(days)}; //new hospital info set to array
 		hospitalMap.put(newCode, newInfo); //adding key and value info to map
-		System.out.println("\nNew hospital successfully added!\n");
+		System.out.println("\n>>New hospital successfully added!\n");
 		
 		menu(); //recall menu
 	}
@@ -129,7 +129,7 @@ public class Hospitals { //Hospital class
 		}
 		
 		else {
-			System.out.print("Hospital not found.\n\n");
+			System.out.print(">>Hospital not found!\n\n");
 			menu();
 		}
 		
@@ -137,6 +137,7 @@ public class Hospitals { //Hospital class
 	}
 	
 	public static void editHospital() { //method to edit info
+		System.out.println("Select ENTER if no input is desired, no changes will be made.\n");
 		System.out.print("Enter 4-digit hospital code (ex. 0001): ");
 		int code = input.nextInt(); //input code
 		input.nextLine();
@@ -194,11 +195,11 @@ public class Hospitals { //Hospital class
 			
 			hospitalMap.put(code, editInfo); //add edited info value and pair with key, in map
 			
-			System.out.println("\nHospital information successfully changed!\n");
+			System.out.println("\n>>Hospital information successfully changed!\n");
 		}
 				
 		else {
-			System.out.print("Hospital not found.\n\n"); //prompt if hospital code not found
+			System.out.print(">>Hospital not found!\n\n"); //prompt if hospital code not found
 			menu();
 		}
 		
@@ -213,10 +214,10 @@ public class Hospitals { //Hospital class
 		if(hospitalMap.containsKey(code)) { //check to see if code is valid
 			String[] hospitalInfo = hospitalMap.get(code); 
 			hospitalMap.remove(code, hospitalInfo); //remove hospital key and value from map
-			System.out.println("Hospital successfully deleted!\n");
+			System.out.println(">>Hospital successfully deleted!\n");
 		}
 		else { //prompt user if no key is found
-			System.out.println("No hospital with that code. No action completed.\n");
+			System.out.println(">>No hospital with that code! No action completed.\n");
 		}
 		
 		menu(); //recall menu
@@ -238,7 +239,7 @@ public class Hospitals { //Hospital class
 		});
 		
 		if(hospitalMap.isEmpty()) { //prompt user if map is empty
-			System.out.println("No current hospitals in database. Please ADD a new hospital first.\n");
+			System.out.println(">>No current hospitals in database! Please ADD a new hospital first.\n");
 			menu();
 		}
 		
@@ -247,7 +248,7 @@ public class Hospitals { //Hospital class
 	
 	public static void menu() { //main menu method
 		Scanner sc = new Scanner(System.in);
-		
+		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 		System.out.println("//Please select a NUMBER from the menu below.\n");
 		
 		System.out.println("1. ADD new hospital information");
@@ -259,10 +260,10 @@ public class Hospitals { //Hospital class
 		
 		System.out.print("\nUser selection: ");
 		int selection = sc.nextInt(); //make sure selection is int
-		System.out.print("\n");
+		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 	
 		if((selection > 6) || (selection <= 0)) { //prompt if number is out of bounds
-			System.out.println("Please only choose a number from 1-6\n");
+			System.out.println(">>Please only choose a number from 1-6!\n");
 			menu();
 		}
 		
